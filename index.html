@@ -1,2 +1,15 @@
-header("content-type:image/jpg");
-echo file_get_contents(json_decode(file_get_contents("http://api.03c3.cn/zb/"))->imageUrl);
+addEventListener('fetch', event => {
+    event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+
+    var background_urls = [
+    'http://api.03c3.cn/zb',
+    ]
+    var index = Math.floor((Math.random()*background_urls.length));
+    res = await fetch(background_urls[index])
+    return new Response(res.body, {
+        headers: { 'content-type': 'image/jpeg' },
+    })
+}
