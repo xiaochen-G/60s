@@ -1,1 +1,2 @@
- <img src="http://api.03c3.cn/zb" />
+header("content-type:image/jpg");
+echo file_get_contents(json_decode(file_get_contents("http://api.03c3.cn/zb/"))->imageUrl);
